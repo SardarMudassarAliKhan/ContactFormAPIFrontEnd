@@ -1,0 +1,53 @@
+<form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="formData.name" required>
+    </div>
+    <div class="mb-3">
+      <label for="subject" class="form-label">Subject</label>
+      <input type="text" class="form-control" id="subject" name="subject" [(ngModel)]="formData.subject" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formData.email" required>
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone</label>
+      <input type="tel" class="form-control" id="phone" name="phone" [(ngModel)]="formData.phoneNo" required>
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Message</label>
+      <textarea class="form-control" id="message" name="message" [(ngModel)]="formData.message" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Subject</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Message</th>
+        <!-- Add more table headers if needed -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of ContactformData">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.subject }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{item.phone}}</td>
+        <td>{{ item.message }}</td>
+        <td>
+            <button class="btn btn-danger" (click)="deleteContactForm(item.id)">Delete</button>
+            <button class="btn btn-primary">Update</button>
+        </td>
+        <!-- Add more table cells if needed -->
+      </tr>
+    </tbody>
+  </table>
+  
